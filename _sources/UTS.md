@@ -4,6 +4,7 @@
 
 sistem persamaan linier dengan 5 variabel
 
+$$
 \[
 \begin{aligned}
 2x_1 + x_2 &= 4 \\
@@ -13,6 +14,7 @@ x_3 + 2x_4 + x_5 &= 16 \\
 x_4 + 2x_5 &= 14
 \end{aligned}
 \]
+$$
 
 # 2.Matrix Augmented
 
