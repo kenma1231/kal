@@ -4,4 +4,8 @@
 format: jb-book
 root: intro
 chapters:
+- file: materi1
+- file: tugas
 - file: UTS
+- file: evaluasi
+- file: refleksi
