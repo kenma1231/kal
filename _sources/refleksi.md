@@ -6,7 +6,7 @@
 ## 🔗 Demo Interaktif
 clik link ini untuk mengarah ke colab
 
-[![Open In Colab](https://colab.research.google.com/drive/1Lz38CM2TZ-KhdKLYer2dtQ_u4aGe6XMO?usp=sharing)]
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Lz38CM2TZ-KhdKLYer2dtQ_u4aGe6XMO?usp=sharing)
 
 > **Cara pakai:** Klik badge di atas → Colab terbuka → Jalankan cell → UI langsung muncul.
 
@@ -239,4 +239,3 @@ Refleksi geometri adalah operasi pencerminan yang mengubah posisi titik dengan a
 Bangun yang dihasilkan selalu **kongruen** dengan bangun asalnya — sama bentuk dan ukuran, hanya posisinya yang tercermin. Jarak setiap titik ke sumbu cermin selalu terjaga sama antara titik asal dan titik hasil refleksi.
 
 --- 
-*Demo interaktif: [![Open In Colab](https://colab.research.google.com/drive/1Lz38CM2TZ-KhdKLYer2dtQ_u4aGe6XMO?usp=sharing)
