@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>QR Decomposition &amp; QR Iteration &#8212; Kal</title>
+    <title>Dekomposisi QR dan Nilai Eigen &#8212; Kal</title>
   
   
   
@@ -185,7 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="evaluasi.html">A. Determinan</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="refleksi.html">📐 Refleksi Geometri</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">QR Decomposition &amp; QR Iteration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dekomposisi QR dan Nilai Eigen</a></li>
 </ul>
 
     </div>
@@ -368,7 +368,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>QR Decomposition & QR Iteration</h1>
+    <h1>Dekomposisi QR dan Nilai Eigen</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,38 +378,17 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-yang-digunakan">Matriks yang Digunakan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-normalisasi-kolom-pertama-q1">Langkah 1 — Normalisasi Kolom Pertama (q₁)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambil-kolom-pertama-matriks-a">1.1 Ambil kolom pertama matriks A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-panjang-vektor-a1">1.2 Hitung panjang vektor a₁</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-vektor-a1">1.3 Normalisasi vektor a₁</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-hitung-dot-product-q1-a2">Langkah 2 — Hitung Dot Product q₁ · a₂</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-dot-product-q1-a2">2.1 Hitung dot product q₁ · a₂</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-hitung-proyeksi-dan-vektor-u2">Langkah 3 — Hitung Proyeksi dan Vektor u₂</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalikan-hasil-dot-product-dengan-q1">3.1 Kalikan hasil dot product dengan q₁</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-u2-a2-proyeksi">3.2 Hitung u₂ = a₂ − proyeksi</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-normalisasi-u2-menjadi-q2">Langkah 4 — Normalisasi u₂ menjadi q₂</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-panjang-u2">4.1 Hitung panjang u₂</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-q2">4.2 Hitung q₂</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-bentuk-matriks-q-dan-r">Langkah 5 — Bentuk Matriks Q dan R</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-verifikasi-qr-a">Langkah 6 — Verifikasi QR = A</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalikan-q-dengan-r">6.1 Kalikan Q dengan R</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-7-hitung-a1-rq-qr-iteration-langkah-1">Langkah 7 — Hitung A₁ = RQ (QR Iteration Langkah 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-8-qr-iteration-10-iterasi">Langkah 8 — QR Iteration (10 Iterasi)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-proses-qr-iteration">Penjelasan Proses QR Iteration</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-nilai-eigen-dengan-numpy">Verifikasi Nilai Eigen dengan NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-a">Matriks A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-gram-schmidt-membentuk-vektor-q1">Tahap 1 — Gram-Schmidt: Membentuk Vektor q₁</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-menghitung-dot-product-q1-a2">Tahap 2 — Menghitung Dot Product q₁ · a₂</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-ortogonalisasi-menghitung-u2">Tahap 3 — Ortogonalisasi: Menghitung u₂</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-normalisasi-u2-menjadi-q2">Tahap 4 — Normalisasi u₂ menjadi q₂</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-menyusun-matriks-q-dan-r">Tahap 5 — Menyusun Matriks Q dan R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-verifikasi-q-r-a">Tahap 6 — Verifikasi Q × R = A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-7-matriks-a2-r-q">Tahap 7 — Matriks A₂ = R × Q</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-8-qr-iteration-konvergensi-ke-nilai-eigen">Tahap 8 — QR Iteration (Konvergensi ke Nilai Eigen)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
             </nav>
         </div>
@@ -421,505 +400,344 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="qr-decomposition-qr-iteration">
-<h1>QR Decomposition &amp; QR Iteration<a class="headerlink" href="#qr-decomposition-qr-iteration" title="Link to this heading">#</a></h1>
-<p><strong>Link Google Colab:</strong> <a class="reference external" href="https://colab.research.google.com/drive/https://colab.research.google.com/drive/1QVL7m9yRdsSlIx9_V1C5vGyOBSuMmwne?usp=sharing">Buka Notebook di Colab</a></p>
-<hr class="docutils" />
-<section id="matriks-yang-digunakan">
-<h2>Matriks yang Digunakan<a class="headerlink" href="#matriks-yang-digunakan" title="Link to this heading">#</a></h2>
-<p>Misalkan matriksnya:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}A = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}\end{split}\]</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="dekomposisi-qr-dan-nilai-eigen">
+<h1>Dekomposisi QR dan Nilai Eigen<a class="headerlink" href="#dekomposisi-qr-dan-nilai-eigen" title="Link to this heading">#</a></h1>
+<p>clik link ini untuk mengarah ke colab</p>
+<section id="id1">
+<h2><a class="reference external" href="https://colab.research.google.com/drive/1QVL7m9yRdsSlIx9_V1C5vGyOBSuMmwne?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 </section>
-<hr class="docutils" />
-<section id="langkah-1-normalisasi-kolom-pertama-q1">
-<h2>Langkah 1 — Normalisasi Kolom Pertama (q₁)<a class="headerlink" href="#langkah-1-normalisasi-kolom-pertama-q1" title="Link to this heading">#</a></h2>
-<section id="ambil-kolom-pertama-matriks-a">
-<h3>1.1 Ambil kolom pertama matriks A<a class="headerlink" href="#ambil-kolom-pertama-matriks-a" title="Link to this heading">#</a></h3>
+<section id="matriks-a">
+<h2>Matriks A<a class="headerlink" href="#matriks-a" title="Link to this heading">#</a></h2>
+<p>Diberikan matriks simetris berukuran 2×2:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}a_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix}\end{split}\]</div>
-</section>
-<section id="hitung-panjang-vektor-a1">
-<h3>1.2 Hitung panjang vektor a₁<a class="headerlink" href="#hitung-panjang-vektor-a1" title="Link to this heading">#</a></h3>
-<p>Rumus panjang vektor:</p>
-<div class="math notranslate nohighlight">
-\[\|a_1\| = \sqrt{3^2 + 1^2}\]</div>
-<div class="math notranslate nohighlight">
-\[= \sqrt{9 + 1}\]</div>
-<div class="math notranslate nohighlight">
-\[= \sqrt{10}\]</div>
-</section>
-<section id="normalisasi-vektor-a1">
-<h3>1.3 Normalisasi vektor a₁<a class="headerlink" href="#normalisasi-vektor-a1" title="Link to this heading">#</a></h3>
-<p>Gunakan rumus:</p>
-<div class="math notranslate nohighlight">
-\[q_1 = \frac{a_1}{\|a_1\|}\]</div>
-<p>Substitusi nilai <span class="math notranslate nohighlight">\(a_1\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}q_1 = \frac{1}{\sqrt{10}} \begin{bmatrix} 3 \\ 1 \end{bmatrix}\end{split}\]</div>
-<p>Hasilnya:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}q_1 = \begin{bmatrix} \dfrac{3}{\sqrt{10}} \\[10pt] \dfrac{1}{\sqrt{10}} \end{bmatrix}\end{split}\]</div>
-<p><strong>Kesimpulan:</strong> Vektor hasil normalisasi kolom pertama adalah <span class="math notranslate nohighlight">\(q_1 = \begin{bmatrix} \frac{3}{\sqrt{10}} \\ \frac{1}{\sqrt{10}} \end{bmatrix}\)</span>, karena panjangnya sudah menjadi 1.</p>
+\[\begin{split}A = \begin{bmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{bmatrix}\end{split}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1"># Matriks A</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="p">])</span>
 
-<span class="c1"># Ambil kolom pertama</span>
-<span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kolom pertama a1:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
-
-<span class="c1"># Hitung panjang vektor</span>
-<span class="n">panjang</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Panjang a1:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;√(3² + 1²) =&quot;</span><span class="p">,</span> <span class="n">panjang</span><span class="p">)</span>
-
-<span class="c1"># Normalisasi</span>
-<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">panjang</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil normalisasi q1:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Kolom pertama a1:
-[3 1]
-
-Panjang a1:
-√(3² + 1²) = 3.1622776601683795
-
-Hasil normalisasi q1:
-[0.9486833  0.31622777]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">2</span> <span class="mi">1</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]]</span>
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section id="langkah-2-hitung-dot-product-q1-a2">
-<h2>Langkah 2 — Hitung Dot Product q₁ · a₂<a class="headerlink" href="#langkah-2-hitung-dot-product-q1-a2" title="Link to this heading">#</a></h2>
-<p>Diketahui:</p>
+<section id="tahap-1-gram-schmidt-membentuk-vektor-q1">
+<h2>Tahap 1 — Gram-Schmidt: Membentuk Vektor q₁<a class="headerlink" href="#tahap-1-gram-schmidt-membentuk-vektor-q1" title="Link to this heading">#</a></h2>
+<p>Proses Gram-Schmidt dimulai dari kolom pertama matriks A:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}q_1 = \begin{bmatrix} \dfrac{3\sqrt{10}}{10} \\[10pt] \dfrac{\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
-<p>dan kolom kedua matriks A:</p>
+\[\begin{split}a_1 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\end{split}\]</div>
+<p><strong>Menghitung norma (panjang) vektor:</strong></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}a_2 = \begin{bmatrix} 1 \\ 3 \end{bmatrix}\end{split}\]</div>
-<section id="hitung-dot-product-q1-a2">
-<h3>2.1 Hitung dot product q₁ · a₂<a class="headerlink" href="#hitung-dot-product-q1-a2" title="Link to this heading">#</a></h3>
-<p>Rumus dot product:</p>
+\[\|a_1\| = \sqrt{2^2 + 1^2} = \sqrt{5} \approx 2.236\]</div>
+<p><strong>Membentuk vektor ortonormal q₁:</strong></p>
 <div class="math notranslate nohighlight">
-\[q_1 \cdot a_2 = \left(\frac{3\sqrt{10}}{10} \times 1\right) + \left(\frac{\sqrt{10}}{10} \times 3\right)\]</div>
-<div class="math notranslate nohighlight">
-\[= \frac{3\sqrt{10}}{10} + \frac{3\sqrt{10}}{10}\]</div>
-<div class="math notranslate nohighlight">
-\[= \frac{6\sqrt{10}}{10}\]</div>
-<div class="math notranslate nohighlight">
-\[= \frac{3\sqrt{10}}{5}\]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span>
+\[\begin{split}q_1 = \frac{a_1}{\|a_1\|} = \frac{1}{\sqrt{5}}\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} \dfrac{2}{\sqrt{5}} \\ \dfrac{1}{\sqrt{5}} \end{bmatrix}\end{split}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1"># Matriks A</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="p">])</span>
 
-<span class="c1"># Ambil kolom</span>
+<span class="c1"># Ekstrak kolom pertama</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vektor a1:&quot;</span><span class="p">,</span> <span class="n">a1</span><span class="p">)</span>
+
+<span class="c1"># Norma vektor</span>
+<span class="n">norma_a1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Norma a1: √(2² + 1²) = </span><span class="si">{</span><span class="n">norma_a1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Vektor ortonormal</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">norma_a1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Vektor q1 (ternormalisasi):&quot;</span><span class="p">,</span> <span class="n">q1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Vektor a1: [2 1]
+
+Norma a1: √(2² + 1²) = 2.23606797749979
+
+Vektor q1 (ternormalisasi): [0.89442719 0.4472136 ]
+</pre></div>
+</div>
+<p>Panjang <span class="math notranslate nohighlight">\(q_1\)</span> sudah bernilai 1, artinya normalisasi berhasil.</p>
+</section>
+<hr class="docutils" />
+<section id="tahap-2-menghitung-dot-product-q1-a2">
+<h2>Tahap 2 — Menghitung Dot Product q₁ · a₂<a class="headerlink" href="#tahap-2-menghitung-dot-product-q1-a2" title="Link to this heading">#</a></h2>
+<p>Kolom kedua matriks A:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_2 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\end{split}\]</div>
+<p><strong>Dot product</strong> <span class="math notranslate nohighlight">\(q_1 \cdot a_2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[q_1 \cdot a_2 = \left(\frac{2\sqrt{5}}{5} \times 1\right) + \left(\frac{\sqrt{5}}{5} \times 2\right) = \frac{2\sqrt{5}}{5} + \frac{2\sqrt{5}}{5} = \frac{4\sqrt{5}}{5}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">])</span>
+
 <span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">a2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Normalisasi q1</span>
-<span class="n">panjang</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">panjang</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="c1"># Dot product q1 . a2</span>
+<span class="c1"># Dot product</span>
 <span class="n">dot</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q1 . a2 =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q1 · a2 =&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q1</span> <span class="o">.</span> <span class="n">a2</span> <span class="o">=</span>
-<span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>q1 · a2 =
+4*sqrt(5)/5
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section id="langkah-3-hitung-proyeksi-dan-vektor-u2">
-<h2>Langkah 3 — Hitung Proyeksi dan Vektor u₂<a class="headerlink" href="#langkah-3-hitung-proyeksi-dan-vektor-u2" title="Link to this heading">#</a></h2>
-<section id="kalikan-hasil-dot-product-dengan-q1">
-<h3>3.1 Kalikan hasil dot product dengan q₁<a class="headerlink" href="#kalikan-hasil-dot-product-dengan-q1" title="Link to this heading">#</a></h3>
+<section id="tahap-3-ortogonalisasi-menghitung-u2">
+<h2>Tahap 3 — Ortogonalisasi: Menghitung u₂<a class="headerlink" href="#tahap-3-ortogonalisasi-menghitung-u2" title="Link to this heading">#</a></h2>
+<p>Komponen proyeksi <span class="math notranslate nohighlight">\(a_2\)</span> ke arah <span class="math notranslate nohighlight">\(q_1\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\left(q_1 \cdot a_2\right) q_1 = \frac{3\sqrt{10}}{5} \begin{bmatrix} \dfrac{3\sqrt{10}}{10} \\[10pt] \dfrac{\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
-<p>Perhitungan:</p>
+\[\begin{split}(q_1 \cdot a_2) \cdot q_1 = \frac{4\sqrt{5}}{5} \begin{bmatrix} \dfrac{2\sqrt{5}}{5} \\ \dfrac{\sqrt{5}}{5} \end{bmatrix} = \begin{bmatrix} \dfrac{8}{5} \\ \dfrac{4}{5} \end{bmatrix}\end{split}\]</div>
+<p>Komponen ortogonal <span class="math notranslate nohighlight">\(u_2\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}= \begin{bmatrix} \dfrac{3\sqrt{10}}{5} \times \dfrac{3\sqrt{10}}{10} \\[10pt] \dfrac{3\sqrt{10}}{5} \times \dfrac{\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}= \begin{bmatrix} \dfrac{9}{5} \\[10pt] \dfrac{3}{5} \end{bmatrix}\end{split}\]</div>
-</section>
-<section id="hitung-u2-a2-proyeksi">
-<h3>3.2 Hitung u₂ = a₂ − proyeksi<a class="headerlink" href="#hitung-u2-a2-proyeksi" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[u_2 = a_2 - (q_1 \cdot a_2)\, q_1\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}u_2 = \begin{bmatrix} 1 \\ 3 \end{bmatrix} - \begin{bmatrix} \dfrac{9}{5} \\[10pt] \dfrac{3}{5} \end{bmatrix}\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}u_2 = \begin{bmatrix} -\dfrac{4}{5} \\[10pt] \dfrac{12}{5} \end{bmatrix}\end{split}\]</div>
+\[\begin{split}u_2 = a_2 - (q_1 \cdot a_2)\,q_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix} - \begin{bmatrix} \dfrac{8}{5} \\ \dfrac{4}{5} \end{bmatrix} = \begin{bmatrix} -\dfrac{3}{5} \\ \dfrac{6}{5} \end{bmatrix}\end{split}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span>
 
-<span class="c1"># Matriks A</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="p">])</span>
 
-<span class="c1"># Ambil kolom</span>
 <span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">a2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># q1</span>
-<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># Proyeksi</span>
-<span class="n">dot</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-<span class="n">proyeksi</span> <span class="o">=</span> <span class="n">dot</span> <span class="o">*</span> <span class="n">q1</span>
+<span class="n">dot</span>  <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">dot</span> <span class="o">*</span> <span class="n">q1</span>
 
-<span class="c1"># u2</span>
-<span class="n">u2</span> <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">proyeksi</span>
-
+<span class="c1"># Vektor ortogonal</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">proj</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u2 =&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u2</span> <span class="o">=</span>
-<span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
+<span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section id="langkah-4-normalisasi-u2-menjadi-q2">
-<h2>Langkah 4 — Normalisasi u₂ menjadi q₂<a class="headerlink" href="#langkah-4-normalisasi-u2-menjadi-q2" title="Link to this heading">#</a></h2>
-<section id="hitung-panjang-u2">
-<h3>4.1 Hitung panjang u₂<a class="headerlink" href="#hitung-panjang-u2" title="Link to this heading">#</a></h3>
+<section id="tahap-4-normalisasi-u2-menjadi-q2">
+<h2>Tahap 4 — Normalisasi u₂ menjadi q₂<a class="headerlink" href="#tahap-4-normalisasi-u2-menjadi-q2" title="Link to this heading">#</a></h2>
+<p><strong>Menghitung norma u₂:</strong></p>
 <div class="math notranslate nohighlight">
-\[\|u_2\| = \sqrt{\left(-\frac{4}{5}\right)^2 + \left(\frac{12}{5}\right)^2}\]</div>
+\[\|u_2\| = \sqrt{\left(-\frac{3}{5}\right)^2 + \left(\frac{6}{5}\right)^2} = \sqrt{\frac{9}{25} + \frac{36}{25}} = \sqrt{\frac{45}{25}} = \frac{3\sqrt{5}}{5}\]</div>
+<p><strong>Vektor ortonormal q₂:</strong></p>
 <div class="math notranslate nohighlight">
-\[= \sqrt{\frac{16}{25} + \frac{144}{25}}\]</div>
-<div class="math notranslate nohighlight">
-\[= \sqrt{\frac{160}{25}}\]</div>
-<div class="math notranslate nohighlight">
-\[= \sqrt{\frac{32}{5}}\]</div>
-<div class="math notranslate nohighlight">
-\[= \frac{4\sqrt{10}}{5}\]</div>
-</section>
-<section id="hitung-q2">
-<h3>4.2 Hitung q₂<a class="headerlink" href="#hitung-q2" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[q_2 = \frac{u_2}{\|u_2\|}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}q_2 = \dfrac{\begin{bmatrix} -\dfrac{4}{5} \\[6pt] \dfrac{12}{5} \end{bmatrix}}{\dfrac{4\sqrt{10}}{5}}\end{split}\]</div>
-<p>Hasil:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}q_2 = \begin{bmatrix} -\dfrac{\sqrt{10}}{10} \\[10pt] \dfrac{3\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
+\[\begin{split}q_2 = \frac{u_2}{\|u_2\|} = \begin{bmatrix} -\dfrac{\sqrt{5}}{5} \\ \dfrac{2\sqrt{5}}{5} \end{bmatrix}\end{split}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">Rational</span>
 
-<span class="c1"># v2</span>
 <span class="n">v2</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="n">Rational</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span>
-    <span class="p">[</span><span class="n">Rational</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+    <span class="p">[</span><span class="n">Rational</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">Rational</span><span class="p">(</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
 <span class="p">])</span>
 
-<span class="c1"># Panjang v2</span>
-<span class="n">panjang_v2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">Rational</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Rational</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">norma_v2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">v2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norma v2 =&quot;</span><span class="p">,</span> <span class="n">norma_v2</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Panjang v2 =&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">panjang_v2</span><span class="p">)</span>
-
-<span class="c1"># q2</span>
-<span class="n">q2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">panjang_v2</span>
-
+<span class="n">q2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">norma_v2</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">q2 =&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">q2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Panjang</span> <span class="n">v2</span> <span class="o">=</span>
-<span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Norma</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
 
 <span class="n">q2</span> <span class="o">=</span>
-<span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">]])</span>
+<span class="n">Matrix</span><span class="p">([[</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section id="langkah-5-bentuk-matriks-q-dan-r">
-<h2>Langkah 5 — Bentuk Matriks Q dan R<a class="headerlink" href="#langkah-5-bentuk-matriks-q-dan-r" title="Link to this heading">#</a></h2>
-<p>Karena kita sudah mendapatkan:</p>
+<section id="tahap-5-menyusun-matriks-q-dan-r">
+<h2>Tahap 5 — Menyusun Matriks Q dan R<a class="headerlink" href="#tahap-5-menyusun-matriks-q-dan-r" title="Link to this heading">#</a></h2>
+<p>Matriks ortogonal Q dibentuk dari kolom <span class="math notranslate nohighlight">\(q_1\)</span> dan <span class="math notranslate nohighlight">\(q_2\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}q_1 = \begin{bmatrix} \dfrac{3\sqrt{10}}{10} \\[10pt] \dfrac{\sqrt{10}}{10} \end{bmatrix}, \quad q_2 = \begin{bmatrix} -\dfrac{\sqrt{10}}{10} \\[10pt] \dfrac{3\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
-<p>Maka matriks Q (kolom-kolomnya adalah q₁ dan q₂):</p>
+\[\begin{split}Q = \begin{bmatrix} \dfrac{2\sqrt{5}}{5} &amp; -\dfrac{\sqrt{5}}{5} \\[8pt] \dfrac{\sqrt{5}}{5} &amp; \dfrac{2\sqrt{5}}{5} \end{bmatrix}\end{split}\]</div>
+<p>Matriks segitiga atas R dihitung dengan <span class="math notranslate nohighlight">\(R = Q^T A\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}Q = \begin{bmatrix} \dfrac{3\sqrt{10}}{10} &amp; -\dfrac{\sqrt{10}}{10} \\[10pt] \dfrac{\sqrt{10}}{10} &amp; \dfrac{3\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
-<p>Dan matriks R dihitung dengan <span class="math notranslate nohighlight">\(R = Q^T A\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}R = \begin{bmatrix} \sqrt{10} &amp; \dfrac{3\sqrt{10}}{5} \\[10pt] 0 &amp; \dfrac{4\sqrt{10}}{5} \end{bmatrix}\end{split}\]</div>
+\[\begin{split}R = \begin{bmatrix} \sqrt{5} &amp; \dfrac{4\sqrt{5}}{5} \\[8pt] 0 &amp; \dfrac{3\sqrt{5}}{5} \end{bmatrix}\end{split}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="p">])</span>
 
 <span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">a2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># q1</span>
-<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">dot</span>  <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+<span class="n">v2</span>   <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">dot</span> <span class="o">*</span> <span class="n">q1</span>
+<span class="n">q2</span>   <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">v2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
 
-<span class="c1"># proyeksi dan u2</span>
-<span class="n">dot</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-<span class="n">proyeksi</span> <span class="o">=</span> <span class="n">dot</span> <span class="o">*</span> <span class="n">q1</span>
-<span class="n">v2</span> <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">proyeksi</span>
-
-<span class="c1"># q2</span>
-<span class="n">q2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">v2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
-
-<span class="c1"># Matriks Q</span>
 <span class="n">Q</span> <span class="o">=</span> <span class="n">Matrix</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">A</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q =&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
-
-<span class="c1"># Matriks R</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">A</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">R =&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span>
-<span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">]])</span>
+<span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
 
 <span class="n">R</span> <span class="o">=</span>
-<span class="n">Matrix</span><span class="p">([[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
+<span class="n">Matrix</span><span class="p">([[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
-<section id="langkah-6-verifikasi-qr-a">
-<h2>Langkah 6 — Verifikasi QR = A<a class="headerlink" href="#langkah-6-verifikasi-qr-a" title="Link to this heading">#</a></h2>
-<section id="kalikan-q-dengan-r">
-<h3>6.1 Kalikan Q dengan R<a class="headerlink" href="#kalikan-q-dengan-r" title="Link to this heading">#</a></h3>
+<section id="tahap-6-verifikasi-q-r-a">
+<h2>Tahap 6 — Verifikasi Q × R = A<a class="headerlink" href="#tahap-6-verifikasi-q-r-a" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
-\[\begin{split}QR = \begin{bmatrix} \dfrac{3\sqrt{10}}{10} &amp; -\dfrac{\sqrt{10}}{10} \\[10pt] \dfrac{\sqrt{10}}{10} &amp; \dfrac{3\sqrt{10}}{10} \end{bmatrix} \begin{bmatrix} \sqrt{10} &amp; \dfrac{3\sqrt{10}}{5} \\[10pt] 0 &amp; \dfrac{4\sqrt{10}}{5} \end{bmatrix}\end{split}\]</div>
-<p>Hasil perkalian:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}QR = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}\end{split}\]</div>
-<p>Ternyata hasilnya kembali menjadi matriks awal <span class="math notranslate nohighlight">\(A\)</span>, karena pada dekomposisi QR berlaku:</p>
-<div class="math notranslate nohighlight">
-\[A = QR\]</div>
+\[\begin{split}QR = \begin{bmatrix} \dfrac{2\sqrt{5}}{5} &amp; -\dfrac{\sqrt{5}}{5} \\[8pt] \dfrac{\sqrt{5}}{5} &amp; \dfrac{2\sqrt{5}}{5} \end{bmatrix} \begin{bmatrix} \sqrt{5} &amp; \dfrac{4\sqrt{5}}{5} \\[8pt] 0 &amp; \dfrac{3\sqrt{5}}{5} \end{bmatrix} = \begin{bmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{bmatrix} = A \checkmark\end{split}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span>
 
 <span class="n">Q</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">],</span>
-    <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span>  <span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">])</span>
 
 <span class="n">R</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>   <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>          <span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>       <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">])</span>
 
-<span class="n">hasil</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">R</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q * R =&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hasil</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q × R =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Q</span> <span class="o">*</span> <span class="n">R</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">*</span> <span class="n">R</span> <span class="o">=</span>
-<span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Q × R =
+Matrix([[2, 1], [1, 2]])
 </pre></div>
 </div>
-</section>
+<p>Dekomposisi <span class="math notranslate nohighlight">\(A = QR\)</span> terbukti benar.</p>
 </section>
 <hr class="docutils" />
-<section id="langkah-7-hitung-a1-rq-qr-iteration-langkah-1">
-<h2>Langkah 7 — Hitung A₁ = RQ (QR Iteration Langkah 1)<a class="headerlink" href="#langkah-7-hitung-a1-rq-qr-iteration-langkah-1" title="Link to this heading">#</a></h2>
-<p>Sekarang cari <span class="math notranslate nohighlight">\(A_{k+1} = R_k Q_k\)</span>:</p>
+<section id="tahap-7-matriks-a2-r-q">
+<h2>Tahap 7 — Matriks A₂ = R × Q<a class="headerlink" href="#tahap-7-matriks-a2-r-q" title="Link to this heading">#</a></h2>
+<p>Satu langkah iterasi QR menghasilkan:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}RQ = \begin{bmatrix} \sqrt{10} &amp; \dfrac{3\sqrt{10}}{5} \\[10pt] 0 &amp; \dfrac{4\sqrt{10}}{5} \end{bmatrix} \begin{bmatrix} \dfrac{3\sqrt{10}}{10} &amp; -\dfrac{\sqrt{10}}{10} \\[10pt] \dfrac{\sqrt{10}}{10} &amp; \dfrac{3\sqrt{10}}{10} \end{bmatrix}\end{split}\]</div>
-<p><strong>Baris 1 Kolom 1:</strong></p>
-<div class="math notranslate nohighlight">
-\[\left(\sqrt{10} \times \frac{3\sqrt{10}}{10}\right) + \left(\frac{3\sqrt{10}}{5} \times \frac{\sqrt{10}}{10}\right) = 3 + \frac{3}{5} = \frac{18}{5}\]</div>
-<p><strong>Baris 1 Kolom 2:</strong></p>
-<div class="math notranslate nohighlight">
-\[\left(\sqrt{10} \times -\frac{\sqrt{10}}{10}\right) + \left(\frac{3\sqrt{10}}{5} \times \frac{3\sqrt{10}}{10}\right) = -1 + \frac{9}{5} = \frac{4}{5}\]</div>
-<p><strong>Baris 2 Kolom 1:</strong></p>
-<div class="math notranslate nohighlight">
-\[\left(0 \times \frac{3\sqrt{10}}{10}\right) + \left(\frac{4\sqrt{10}}{5} \times \frac{\sqrt{10}}{10}\right) = 0 + \frac{4}{5} = \frac{4}{5}\]</div>
-<p><strong>Baris 2 Kolom 2:</strong></p>
-<div class="math notranslate nohighlight">
-\[\left(0 \times -\frac{\sqrt{10}}{10}\right) + \left(\frac{4\sqrt{10}}{5} \times \frac{3\sqrt{10}}{10}\right) = 0 + \frac{12}{5} = \frac{12}{5}\]</div>
-<p><strong>Hasil Akhir:</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}RQ = \begin{bmatrix} \dfrac{18}{5} &amp; \dfrac{4}{5} \\[10pt] \dfrac{4}{5} &amp; \dfrac{12}{5} \end{bmatrix}\end{split}\]</div>
+\[\begin{split}A_2 = RQ = \begin{bmatrix} \sqrt{5} &amp; \dfrac{4\sqrt{5}}{5} \\[8pt] 0 &amp; \dfrac{3\sqrt{5}}{5} \end{bmatrix} \begin{bmatrix} \dfrac{2\sqrt{5}}{5} &amp; -\dfrac{\sqrt{5}}{5} \\[8pt] \dfrac{\sqrt{5}}{5} &amp; \dfrac{2\sqrt{5}}{5} \end{bmatrix} = \begin{bmatrix} \dfrac{14}{5} &amp; \dfrac{3}{5} \\[8pt] \dfrac{3}{5} &amp; \dfrac{6}{5} \end{bmatrix}\end{split}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span>
 
-<span class="n">R</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>   <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>          <span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
-<span class="p">])</span>
-
 <span class="n">Q</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">],</span>
-    <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span>  <span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">])</span>
 
-<span class="n">hasil</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">Q</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
+    <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span>       <span class="mi">3</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
+<span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R * Q =&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hasil</span><span class="p">)</span>
+<span class="n">A2</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">Q</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R × Q =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Output:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">*</span> <span class="n">Q</span> <span class="o">=</span>
-<span class="n">Matrix</span><span class="p">([[</span><span class="mi">18</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="o">/</span><span class="mi">5</span><span class="p">]])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>R × Q =
+Matrix([[14/5, 3/5], [3/5, 6/5]])
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
-<section id="langkah-8-qr-iteration-10-iterasi">
-<h2>Langkah 8 — QR Iteration (10 Iterasi)<a class="headerlink" href="#langkah-8-qr-iteration-10-iterasi" title="Link to this heading">#</a></h2>
-<section id="penjelasan-proses-qr-iteration">
-<h3>Penjelasan Proses QR Iteration<a class="headerlink" href="#penjelasan-proses-qr-iteration" title="Link to this heading">#</a></h3>
-<p>Metode ini disebut <strong>QR Iteration</strong>. Tujuannya untuk mendekati nilai eigen matriks.</p>
-<p><strong>Langkah-langkahnya:</strong></p>
-<ol class="arabic simple">
-<li><p>Mulai dari matriks awal <span class="math notranslate nohighlight">\(A_0 = A\)</span></p></li>
-<li><p>Lakukan dekomposisi QR: <span class="math notranslate nohighlight">\(A_k = Q_k R_k\)</span></p></li>
-<li><p>Bentuk matriks baru: <span class="math notranslate nohighlight">\(A_{k+1} = R_k Q_k\)</span></p></li>
-<li><p>Ulangi hingga matriks konvergen ke bentuk segitiga (hampir diagonal)</p></li>
-<li><p>Nilai diagonal matriks akhir mendekati <strong>nilai eigen</strong> matriks asal</p></li>
-</ol>
+<section id="tahap-8-qr-iteration-konvergensi-ke-nilai-eigen">
+<h2>Tahap 8 — QR Iteration (Konvergensi ke Nilai Eigen)<a class="headerlink" href="#tahap-8-qr-iteration-konvergensi-ke-nilai-eigen" title="Link to this heading">#</a></h2>
+<p>QR Iteration bekerja dengan cara berulang kali melakukan dekomposisi <span class="math notranslate nohighlight">\(A_k = Q_k R_k\)</span>, lalu membentuk <span class="math notranslate nohighlight">\(A_{k+1} = R_k Q_k\)</span>. Elemen diagonal akan semakin mendekati nilai eigen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">pprint</span>
 
-<span class="c1"># ==========================</span>
-<span class="c1"># Matriks awal</span>
-<span class="c1"># ==========================</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A0 =&quot;</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
-<span class="c1"># ==========================</span>
-<span class="c1"># QR ITERATION</span>
-<span class="c1"># ==========================</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-
-    <span class="c1"># Ambil kolom</span>
     <span class="n">a1</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">a2</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 
-    <span class="c1"># q1</span>
-    <span class="n">q1</span> <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a1</span><span class="p">))</span>
-
-    <span class="c1"># proyeksi</span>
+    <span class="c1"># Gram-Schmidt</span>
+    <span class="n">q1</span>   <span class="o">=</span> <span class="n">a1</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a1</span><span class="p">))</span>
     <span class="n">proj</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">*</span> <span class="n">q1</span>
+    <span class="n">v2</span>   <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">proj</span>
+    <span class="n">q2</span>   <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">v2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
 
-    <span class="c1"># v2</span>
-    <span class="n">v2</span> <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">proj</span>
-
-    <span class="c1"># q2</span>
-    <span class="n">q2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">v2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
-
-    <span class="c1"># Matriks Q</span>
+    <span class="c1"># Susun Q dan R</span>
     <span class="n">Q</span> <span class="o">=</span> <span class="n">Matrix</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">)</span>
-
-    <span class="c1"># Matriks R</span>
     <span class="n">R</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">A</span>
 
-    <span class="c1"># Matriks baru</span>
+    <span class="c1"># Update A</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">Q</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> =&quot;</span><span class="p">)</span>
     <span class="n">pprint</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><strong>Output (sebagian):</strong></p>
+<p><strong>Output:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>A0 =
-⎡3  1⎤
-⎢    ⎥
-⎣1  3⎦
+[2  1]
+[   ]
+[1  2]
 
 A1 =
-⎡3.6  0.8⎤
-⎢        ⎥
-⎣0.8  2.4⎦
+[2.8  0.6]
+[         ]
+[0.6  1.2]
 
 A2 =
-⎡3.84  0.48⎤
-⎢          ⎥
-⎣0.48  2.16⎦
+[2.96  0.28]
+[            ]
+[0.28  1.04 ]
 
 ...
 
-A10 =
-⎡3.99902  0.00391⎤
-⎢                ⎥
-⎣0.00391  3.00098⎦
+A10 ≈
+[3.0   ~0 ]
+[          ]
+[~0   1.0 ]
 </pre></div>
 </div>
-<blockquote>
-<div><p><strong>Kesimpulan:</strong> Setelah 10 iterasi, elemen diagonal matriks mendekati <strong>4</strong> dan <strong>2</strong>, yang merupakan nilai eigen dari matriks <span class="math notranslate nohighlight">\(A = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}\)</span>.</p>
-</div></blockquote>
-</section>
 </section>
 <hr class="docutils" />
-<section id="verifikasi-nilai-eigen-dengan-numpy">
-<h2>Verifikasi Nilai Eigen dengan NumPy<a class="headerlink" href="#verifikasi-nilai-eigen-dengan-numpy" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="p">])</span>
-
-<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nilai Eigen:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Vektor Eigen:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Output:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nilai</span> <span class="n">Eigen</span><span class="p">:</span>
-<span class="p">[</span><span class="mf">4.</span> <span class="mf">2.</span><span class="p">]</span>
-
-<span class="n">Vektor</span> <span class="n">Eigen</span><span class="p">:</span>
-<span class="p">[[</span> <span class="mf">0.70710678</span> <span class="o">-</span><span class="mf">0.70710678</span><span class="p">]</span>
- <span class="p">[</span> <span class="mf">0.70710678</span>  <span class="mf">0.70710678</span><span class="p">]]</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p><strong>Terbukti:</strong> Nilai eigen matriks A adalah <strong>λ₁ = 4</strong> dan <strong>λ₂ = 2</strong>, sesuai dengan hasil konvergensi QR Iteration pada diagonal matriks.</p>
-</div></blockquote>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Setelah 10 iterasi, diagonal matriks konvergen ke:</p>
+<div class="math notranslate nohighlight">
+\[\lambda_1 \approx 3, \quad \lambda_2 \approx 1\]</div>
+<p>Nilai ini sesuai dengan eigen value analitik matriks <span class="math notranslate nohighlight">\(A = \begin{bmatrix} 2 &amp; 1 \\ 1 &amp; 2 \end{bmatrix}\)</span>, yaitu <span class="math notranslate nohighlight">\(\lambda = 2 \pm 1\)</span>.</p>
 </section>
 </section>
 
@@ -980,38 +798,17 @@ A10 =
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-yang-digunakan">Matriks yang Digunakan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-normalisasi-kolom-pertama-q1">Langkah 1 — Normalisasi Kolom Pertama (q₁)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambil-kolom-pertama-matriks-a">1.1 Ambil kolom pertama matriks A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-panjang-vektor-a1">1.2 Hitung panjang vektor a₁</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-vektor-a1">1.3 Normalisasi vektor a₁</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-hitung-dot-product-q1-a2">Langkah 2 — Hitung Dot Product q₁ · a₂</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-dot-product-q1-a2">2.1 Hitung dot product q₁ · a₂</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-hitung-proyeksi-dan-vektor-u2">Langkah 3 — Hitung Proyeksi dan Vektor u₂</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalikan-hasil-dot-product-dengan-q1">3.1 Kalikan hasil dot product dengan q₁</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-u2-a2-proyeksi">3.2 Hitung u₂ = a₂ − proyeksi</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-normalisasi-u2-menjadi-q2">Langkah 4 — Normalisasi u₂ menjadi q₂</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-panjang-u2">4.1 Hitung panjang u₂</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-q2">4.2 Hitung q₂</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-bentuk-matriks-q-dan-r">Langkah 5 — Bentuk Matriks Q dan R</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-verifikasi-qr-a">Langkah 6 — Verifikasi QR = A</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalikan-q-dengan-r">6.1 Kalikan Q dengan R</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-7-hitung-a1-rq-qr-iteration-langkah-1">Langkah 7 — Hitung A₁ = RQ (QR Iteration Langkah 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-8-qr-iteration-10-iterasi">Langkah 8 — QR Iteration (10 Iterasi)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-proses-qr-iteration">Penjelasan Proses QR Iteration</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-nilai-eigen-dengan-numpy">Verifikasi Nilai Eigen dengan NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-a">Matriks A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-gram-schmidt-membentuk-vektor-q1">Tahap 1 — Gram-Schmidt: Membentuk Vektor q₁</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-menghitung-dot-product-q1-a2">Tahap 2 — Menghitung Dot Product q₁ · a₂</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-ortogonalisasi-menghitung-u2">Tahap 3 — Ortogonalisasi: Menghitung u₂</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-normalisasi-u2-menjadi-q2">Tahap 4 — Normalisasi u₂ menjadi q₂</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-menyusun-matriks-q-dan-r">Tahap 5 — Menyusun Matriks Q dan R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-verifikasi-q-r-a">Tahap 6 — Verifikasi Q × R = A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-7-matriks-a2-r-q">Tahap 7 — Matriks A₂ = R × Q</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-8-qr-iteration-konvergensi-ke-nilai-eigen">Tahap 8 — QR Iteration (Konvergensi ke Nilai Eigen)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
   </nav></div>
 
