@@ -1,7 +1,4 @@
-# Laporan Refleksi Geometri
-## Pencerminan Titik terhadap Sumbu X dan Sumbu Y
-
----
+# 📐 Refleksi Geometri
 
 ## 🔗 Demo Interaktif
 clik link ini untuk mengarah ke colab
@@ -12,230 +9,300 @@ clik link ini untuk mengarah ke colab
 
 ---
 
-## 1. Pengertian Refleksi
-
-Refleksi (pencerminan) adalah transformasi geometri yang memindahkan setiap titik pada suatu bidang ke posisi baru dengan cara mencerminkannya terhadap suatu garis sumbu. Hasil refleksi memiliki jarak yang sama terhadap sumbu cermin, tetapi berada di sisi yang berlawanan.
-
-> **Analogi:** Bayangkan kamu berdiri di depan cermin. Bayangan kamu berada di jarak yang sama dengan jarak kamu ke cermin, tetapi di sisi yang berlawanan.
+> **Refleksi** (pencerminan) adalah transformasi geometri yang memindahkan setiap titik
+> pada suatu bangun ke posisi baru yang merupakan **bayangan cerminnya** terhadap suatu sumbu.
+> Jarak titik asal ke sumbu cermin **selalu sama** dengan jarak bayangan ke sumbu cermin.
 
 ---
 
-## 2. Refleksi sebagai Transformasi Linear (Matriks)
+## 1. Konsep Dasar
 
-Secara matematis, refleksi adalah **transformasi linear** yang direpresentasikan sebagai perkalian matriks. Setiap titik ditulis sebagai vektor kolom:
+Bayangkan kamu meletakkan cermin datar di atas kertas berkotak. Setiap titik pada bangun
+akan memiliki bayangan di sisi lain cermin, dengan jarak yang persis sama. Itulah refleksi.
 
-```
-     | x |
-P =  |   |
-     | y |
-```
+Dua hal yang **tidak berubah** setelah refleksi:
 
-Transformasi dilakukan dengan:
+- Ukuran dan bentuk bangun (kongruen)
+- Jarak antar titik
 
-```
-P' = M × P
-```
+Satu hal yang **berubah**:
+
+- Orientasi — bangun terlihat "terbalik" seperti di cermin
 
 ---
 
-## 3. Refleksi terhadap Sumbu X
+## 2. Refleksi terhadap Sumbu X
 
-### Matriks Refleksi X
+### Aturan
 
-```
-        |  1   0 |
-M_x  =  |        |
-        |  0  -1 |
-```
+$$
+(x,\ y) \xrightarrow{\text{Ref. sumbu X}} (x,\ -y)
+$$
 
-### Rumus
+Nilai **x tetap**, nilai **y dibalik tandanya**.
 
-```
-(x, y)  →  (x, -y)
-```
+### Cara kerja
 
-### Cara Kerja Pergeseran
+Sumbu X adalah garis cermin horizontal. Setiap titik "dijatuhkan" tegak lurus ke sumbu X,
+lalu dipantulkan sejauh yang sama ke sisi bawah (atau atas).
 
 ```
-| x' |   |  1   0 | | x |   |  x  |
-|    | = |        | |   | = |     |
-| y' |   |  0  -1 | | y |   | -y  |
+Titik asal  P(3, 4)
+             │  ↑ 4 satuan
+─────────────┼──────────  ← Sumbu X (cermin)
+             │  ↓ 4 satuan
+Bayangan    P'(3, -4)
 ```
 
-- Nilai **x tidak berubah** — titik tetap di kolom vertikal yang sama
-- Nilai **y dibalik tandanya** — titik berpindah melewati sumbu X secara vertikal
-- Jarak titik ke sumbu X **tetap sama**
+### Contoh
 
-### Ilustrasi Pergeseran
+| Titik Asal | Bayangan Ref-X | Keterangan         |
+|:----------:|:--------------:|:-------------------|
+| (2, 3)     | (2, -3)        | y positif → negatif |
+| (5, -1)    | (5, 1)         | y negatif → positif |
+| (4, 0)     | (4, 0)         | Titik di sumbu X tidak berpindah |
+| (-3, 6)    | (-3, -6)       | x tidak berubah    |
 
-```
-Y
-^
-4 |  *(2,4)--*(4,4)     ← titik asal (biru)
-  |  |        |
-2 |  *(2,2)--*(4,2)
-  |
---+----------------------------> X
-  |
--2|  *(2,-2)-*(4,-2)    ← hasil refleksi X (hijau)
-  |  |        |
--4|  *(2,-4)-*(4,-4)
-```
+### Rumus umum untuk bangun dengan n titik
 
-### Contoh Perhitungan
+Jika bangun memiliki titik-titik $A(x_1, y_1),\ B(x_2, y_2),\ \ldots$, maka setelah refleksi
+terhadap sumbu X:
 
-| Titik | Koordinat Asal | Proses | Hasil Refleksi X |
-|-------|---------------|--------|-----------------|
-| Titik 1 | (2, 2) | y: 2 → −2 | (2, −2) |
-| Titik 2 | (4, 2) | y: 2 → −2 | (4, −2) |
-| Titik 3 | (4, 4) | y: 4 → −4 | (4, −4) |
-| Titik 4 | (2, 4) | y: 4 → −4 | (2, −4) |
+$$
+A'(x_1,\ -y_1),\quad B'(x_2,\ -y_2),\quad \ldots
+$$
 
 ---
 
-## 4. Refleksi terhadap Sumbu Y
+## 3. Refleksi terhadap Sumbu Y
 
-### Matriks Refleksi Y
+### Aturan
 
-```
-        | -1   0 |
-M_y  =  |        |
-        |  0   1 |
-```
+$$
+(x,\ y) \xrightarrow{\text{Ref. sumbu Y}} (-x,\ y)
+$$
 
-### Rumus
+Nilai **y tetap**, nilai **x dibalik tandanya**.
 
-```
-(x, y)  →  (-x, y)
-```
+### Cara kerja
 
-### Cara Kerja Pergeseran
+Sumbu Y adalah garis cermin vertikal. Setiap titik "didorong" tegak lurus ke sumbu Y,
+lalu dipantulkan sejauh yang sama ke sisi kiri (atau kanan).
 
 ```
-| x' |   | -1   0 | | x |   | -x |
-|    | = |        | |   | = |    |
-| y' |   |  0   1 | | y |   |  y |
+Bayangan       Titik asal
+P'(-3, 4)      P(3, 4)
+     ←3─────────┼─────3→
+                │
+               Sumbu Y
+               (cermin)
 ```
 
-- Nilai **y tidak berubah** — titik tetap di baris horizontal yang sama
-- Nilai **x dibalik tandanya** — titik berpindah melewati sumbu Y secara horizontal
-- Jarak titik ke sumbu Y **tetap sama**
+### Contoh
 
-### Ilustrasi Pergeseran
+| Titik Asal | Bayangan Ref-Y | Keterangan         |
+|:----------:|:--------------:|:-------------------|
+| (2, 3)     | (-2, 3)        | x positif → negatif |
+| (-5, 1)    | (5, 1)         | x negatif → positif |
+| (0, 7)     | (0, 7)         | Titik di sumbu Y tidak berpindah |
+| (6, -4)    | (-6, -4)       | y tidak berubah    |
 
-```
-Y
-^
-4 | *(-4,4)-*(-2,4)      *(2,4)--*(4,4)
-  |  |       |           |        |
-2 | *(-4,2)-*(-2,2)      *(2,2)--*(4,2)
-  |                  |
---+------------------+-----------------> X
-     refleksi Y (merah)       asal (biru)
-```
+### Rumus umum untuk bangun dengan n titik
 
-### Contoh Perhitungan
-
-| Titik | Koordinat Asal | Proses | Hasil Refleksi Y |
-|-------|---------------|--------|-----------------|
-| Titik 1 | (2, 2) | x: 2 → −2 | (−2, 2) |
-| Titik 2 | (4, 2) | x: 4 → −4 | (−4, 2) |
-| Titik 3 | (4, 4) | x: 4 → −4 | (−4, 4) |
-| Titik 4 | (2, 4) | x: 2 → −2 | (−2, 4) |
+$$
+A'(-x_1,\ y_1),\quad B'(-x_2,\ y_2),\quad \ldots
+$$
 
 ---
 
-## 5. Perbandingan Refleksi X dan Refleksi Y
+## 4. Perbandingan Refleksi X vs Refleksi Y
 
-| Aspek | Refleksi Sumbu X | Refleksi Sumbu Y |
-|-------|-----------------|-----------------|
-| Sumbu cermin | Garis horizontal (y = 0) | Garis vertikal (x = 0) |
-| Matriks | `[[1,0],[0,-1]]` | `[[-1,0],[0,1]]` |
-| Koordinat yang berubah | Nilai y (dibalik) | Nilai x (dibalik) |
-| Koordinat yang tetap | Nilai x | Nilai y |
-| Arah pergeseran | Vertikal (atas ↔ bawah) | Horizontal (kiri ↔ kanan) |
-| Determinan matriks | −1 | −1 |
-
-> **Catatan:** Determinan = −1 menandakan refleksi membalik orientasi bangun (searah jarum jam menjadi berlawanan arah jarum jam).
+| Aspek            | Refleksi Sumbu X        | Refleksi Sumbu Y        |
+|:-----------------|:-----------------------:|:-----------------------:|
+| Cermin / sumbu   | Sumbu X (horizontal)    | Sumbu Y (vertikal)      |
+| Koordinat berubah | y → -y                 | x → -x                  |
+| Koordinat tetap  | x                       | y                        |
+| Arah bayangan    | Atas ↔ Bawah            | Kiri ↔ Kanan             |
+| Contoh           | (3, 5) → (3, -5)        | (3, 5) → (-3, 5)        |
 
 ---
 
-## 6. Sifat-Sifat Refleksi
+## 5. Cara Menggambar Refleksi (Manual)
 
-1. **Isometri** — Jarak antar titik tidak berubah. Bangun hasil refleksi kongruen (sama bentuk dan ukuran) dengan bangun asalnya.
+### Langkah-langkah
 
-2. **Orientasi terbalik** — Urutan titik searah jarum jam pada bangun asal menjadi berlawanan arah jarum jam pada hasil refleksi.
+1. **Tentukan titik-titik** sudut bangun asal, misalnya persegi $ABCD$.
+2. **Terapkan rumus** pada setiap titik untuk mendapatkan bayangan.
+3. **Plot** titik-titik bayangan di sistem koordinat.
+4. **Hubungkan** titik-titik bayangan sesuai urutan semula.
+5. **Verifikasi** — ukur jarak setiap titik asal ke sumbu, bandingkan dengan jarak bayangan ke sumbu (harus sama).
 
-3. **Refleksi dua kali = Identitas** — Merefleksikan dua kali terhadap sumbu yang sama mengembalikan titik ke posisi asal:
-   ```
-   M_x × M_x = I  →  (x, y) → (x, -y) → (x, y)
-   ```
+### Contoh lengkap: Persegi ABCD
 
-4. **Refleksi X lalu Y = Rotasi 180°** — Merefleksikan terhadap sumbu X kemudian Y menghasilkan rotasi setengah putaran:
-   ```
-   M_y × M_x = | -1   0 |  ← matriks rotasi 180°
-               |  0  -1 |
-   ```
+Titik asal:
 
-5. **Titik pada sumbu tidak berpindah** — Titik tepat di sumbu X (y=0) tidak berubah saat refleksi X, begitu pula sebaliknya.
+$$
+A(2,\ 2),\quad B(5,\ 2),\quad C(5,\ 5),\quad D(2,\ 5)
+$$
+
+**Setelah refleksi sumbu X** (y → -y):
+
+$$
+A'(2,\ -2),\quad B'(5,\ -2),\quad C'(5,\ -5),\quad D'(2,\ -5)
+$$
+
+**Setelah refleksi sumbu Y** (x → -x):
+
+$$
+A''(-2,\ 2),\quad B''(-5,\ 2),\quad C''(-5,\ 5),\quad D''(-2,\ 5)
+$$
 
 ---
 
-## 7. Implementasi Program
+## 6. Sifat-Sifat Penting Refleksi
 
-Program dibuat menggunakan **Python** dengan dua versi:
+### Isometri (Kongruensi)
 
-| Versi | Library | Environment |
-|-------|---------|-------------|
-| Desktop | Tkinter + Matplotlib | Lokal (laptop) |
-| Cloud | ipywidgets + Matplotlib | Google Colab |
+Refleksi adalah **transformasi isometri** — bangun bayangan kongruen dengan bangun asal.
+Panjang sisi, besar sudut, dan luas bangun tidak berubah.
 
-### Kode Inti Refleksi
+### Involutif
+
+Jika suatu bangun direfleksikan dua kali terhadap sumbu yang sama, hasilnya kembali ke
+posisi semula:
+
+$$
+\text{Ref}(\text{Ref}(P)) = P
+$$
+
+### Jarak ke Sumbu
+
+Untuk setiap titik $P$ dan bayangannya $P'$:
+
+$$
+d(P,\ \text{sumbu}) = d(P',\ \text{sumbu})
+$$
+
+Garis $PP'$ selalu **tegak lurus** terhadap sumbu cermin.
+
+### Titik pada Sumbu
+
+Titik yang terletak tepat di atas sumbu cermin **tidak berpindah** (titik tetap / fixed point).
+
+---
+
+## 7. Representasi Matriks
+
+Refleksi dapat ditulis dalam bentuk perkalian matriks, berguna untuk komputasi:
+
+### Refleksi terhadap sumbu X
+
+$$
+\begin{pmatrix} x' \\ y' \end{pmatrix}
+=
+\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+$$
+
+### Refleksi terhadap sumbu Y
+
+$$
+\begin{pmatrix} x' \\ y' \end{pmatrix}
+=
+\begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+$$
+
+### Implementasi di Python (NumPy)
 
 ```python
-# Menghitung koordinat hasil refleksi
-ref_x = [(x, -y) for x, y in points]   # Refleksi terhadap sumbu X
-ref_y = [(-x, y) for x, y in points]   # Refleksi terhadap sumbu Y
+import numpy as np
+
+# Titik-titik bangun (kolom = satu titik)
+points = np.array([[2, 5, 5, 2],   # baris x
+                   [2, 2, 5, 5]])  # baris y
+
+# Matriks refleksi sumbu X
+M_refx = np.array([[ 1,  0],
+                   [ 0, -1]])
+
+# Matriks refleksi sumbu Y
+M_refy = np.array([[-1,  0],
+                   [ 0,  1]])
+
+ref_x = M_refx @ points   # hasil refleksi X
+ref_y = M_refy @ points   # hasil refleksi Y
+
+print("Asal  :", points.T)
+print("Ref-X :", ref_x.T)
+print("Ref-Y :", ref_y.T)
 ```
-
-### Cara Kerja Animasi
-
-Animasi menggunakan **interpolasi linear** — titik bergerak dari posisi asal ke posisi refleksi selama 40 frame:
-
-```python
-t = frame / 40          # t bergerak dari 0.0 → 1.0
-xt = x0 + (x1 - x0) * t   # posisi x sementara
-yt = y0 + (y1 - y0) * t   # posisi y sementara
-```
-
-| Frame | t | Posisi sementara (target (2, −2)) |
-|-------|---|----------------------------------|
-| 0  | 0.00 | (2.0, 2.0) — posisi awal |
-| 10 | 0.25 | (2.0, 1.0) — seperempat jalan |
-| 20 | 0.50 | (2.0, 0.0) — tepat di sumbu X |
-| 30 | 0.75 | (2.0, −1.0) — tiga perempat |
-| 40 | 1.00 | (2.0, −2.0) — posisi refleksi |
-
-### Fitur Program
-
-- Input 4 titik koordinat (x, y) secara manual
-- Tombol **Tampilkan** — menggambar bangun asal
-- Tombol **Refleksi X** — animasi pencerminan ke sumbu X
-- Tombol **Refleksi Y** — animasi pencerminan ke sumbu Y
-- Toggle layer — show/hide masing-masing bangun
-- Tabel koordinat — menampilkan semua titik asal dan hasil refleksi
-- Tombol **Contoh** — mengisi input otomatis dengan kotak (2,2)–(4,4)
-- Tombol **Hapus** — reset semua input dan grafik
 
 ---
 
-## 8. Kesimpulan
+## 8. Penjelasan Kode Visualisasi
 
-Refleksi geometri adalah operasi pencerminan yang mengubah posisi titik dengan aturan sederhana berbasis matriks transformasi linear:
+Kode `refleksi_geometri.py` bekerja dengan langkah berikut:
 
-- **Refleksi sumbu X** → Matriks `[[1,0],[0,-1]]` → balik nilai y: `(x, y) → (x, −y)`
-- **Refleksi sumbu Y** → Matriks `[[-1,0],[0,1]]` → balik nilai x: `(x, y) → (−x, y)`
+### Perhitungan refleksi
 
-Bangun yang dihasilkan selalu **kongruen** dengan bangun asalnya — sama bentuk dan ukuran, hanya posisinya yang tercermin. Jarak setiap titik ke sumbu cermin selalu terjaga sama antara titik asal dan titik hasil refleksi.
+```python
+# Pengguna memasukkan 4 titik
+pts = [(2, 2), (5, 2), (5, 5), (2, 5)]
 
---- 
+# Refleksi X: balik tanda y
+ref_x = [(x, -y) for x, y in pts]
+
+# Refleksi Y: balik tanda x
+ref_y = [(-x, y) for x, y in pts]
+```
+
+### Animasi (kunci perbaikan)
+
+Animasi menggunakan **interpolasi linier** dari titik asal ke titik tujuan.
+Persamaan interpolasi untuk setiap frame $f$ dari total $F$ frame:
+
+$$
+x_t = x_0 + (x_1 - x_0) \cdot \frac{f}{F}, \qquad
+y_t = y_0 + (y_1 - y_0) \cdot \frac{f}{F}
+$$
+
+```python
+for f in range(frames + 1):
+    t = f / frames
+    interp = [
+        (
+            pts[i][0] + (target[i][0] - pts[i][0]) * t,  # interpolasi x
+            pts[i][1] + (target[i][1] - pts[i][1]) * t,  # interpolasi y
+        )
+        for i in range(4)
+    ]
+```
+
+> **Catatan perbaikan:** Versi sebelumnya menggunakan variabel `OFFSET` untuk menggeser
+> posisi bangun di layar, sehingga interpolasi dimulai dari koordinat yang salah dan animasi
+> terlihat "melompat". Versi baru menghapus OFFSET — semua bangun digambar di koordinat
+> aslinya, dan interpolasi berjalan dengan benar dari awal hingga akhir.
+
+---
+
+## 9. Latihan
+
+Coba kerjakan soal-soal berikut, lalu verifikasi dengan program:
+
+1. Segitiga dengan titik $P(1, 3),\ Q(4, 1),\ R(2, 5)$.
+   Tentukan bayangan setelah refleksi terhadap sumbu X dan sumbu Y.
+
+2. Trapesium $A(-3, 0),\ B(3, 0),\ C(2, 4),\ D(-2, 4)$.
+   Refleksikan terhadap sumbu X. Apakah ada titik yang tidak berpindah?
+
+3. Jika bayangan suatu titik setelah refleksi sumbu Y adalah $(5, -3)$,
+   berapakah koordinat titik asalnya?
+
+4. Sebuah bangun direfleksikan terhadap sumbu X, kemudian hasilnya direfleksikan lagi
+   terhadap sumbu Y. Apakah hasil akhirnya sama dengan rotasi 180° terhadap titik asal?
+   Jelaskan dengan contoh!
+
+---
+
+*Dibuat untuk mendampingi program `refleksi_geometri.py` di Google Colab.*

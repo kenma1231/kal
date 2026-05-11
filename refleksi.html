@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Laporan Refleksi Geometri &#8212; Kal</title>
+    <title>📐 Refleksi Geometri &#8212; Kal</title>
   
   
   
@@ -60,9 +60,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'refleksi';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="QR Decomposition &amp; QR Iteration" href="tugas-qr-decomposition.html" />
     <link rel="prev" title="A. Determinan" href="evaluasi.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,7 +185,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="evaluasi.html">A. Determinan</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Laporan Refleksi Geometri</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">📐 Refleksi Geometri</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas-qr-decomposition.html">QR Decomposition &amp; QR Iteration</a></li>
 </ul>
 
     </div>
@@ -365,7 +369,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Laporan Refleksi Geometri</h1>
+    <h1>📐 Refleksi Geometri</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -375,35 +379,47 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pencerminan-titik-terhadap-sumbu-x-dan-sumbu-y">Pencerminan Titik terhadap Sumbu X dan Sumbu Y</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-interaktif">🔗 Demo Interaktif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-refleksi">1. Pengertian Refleksi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-sebagai-transformasi-linear-matriks">2. Refleksi sebagai Transformasi Linear (Matriks)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-x">3. Refleksi terhadap Sumbu X</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-refleksi-x">Matriks Refleksi X</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus">Rumus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-pergeseran">Cara Kerja Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ilustrasi-pergeseran">Ilustrasi Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan">Contoh Perhitungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar">1. Konsep Dasar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-x">2. Refleksi terhadap Sumbu X</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aturan">Aturan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">Cara kerja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-umum-untuk-bangun-dengan-n-titik">Rumus umum untuk bangun dengan n titik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-y">4. Refleksi terhadap Sumbu Y</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-refleksi-y">Matriks Refleksi Y</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Rumus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Cara Kerja Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ilustrasi Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Contoh Perhitungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-y">3. Refleksi terhadap Sumbu Y</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Aturan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Cara kerja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Contoh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Rumus umum untuk bangun dengan n titik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-refleksi-x-dan-refleksi-y">5. Perbandingan Refleksi X dan Refleksi Y</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-sifat-refleksi">6. Sifat-Sifat Refleksi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-program">7. Implementasi Program</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-inti-refleksi">Kode Inti Refleksi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-animasi">Cara Kerja Animasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-program">Fitur Program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-refleksi-x-vs-refleksi-y">4. Perbandingan Refleksi X vs Refleksi Y</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-menggambar-refleksi-manual">5. Cara Menggambar Refleksi (Manual)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah">Langkah-langkah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-lengkap-persegi-abcd">Contoh lengkap: Persegi ABCD</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">8. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-sifat-penting-refleksi">6. Sifat-Sifat Penting Refleksi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isometri-kongruensi">Isometri (Kongruensi)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#involutif">Involutif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-ke-sumbu">Jarak ke Sumbu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#titik-pada-sumbu">Titik pada Sumbu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representasi-matriks">7. Representasi Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Refleksi terhadap sumbu X</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Refleksi terhadap sumbu Y</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-di-python-numpy">Implementasi di Python (NumPy)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-kode-visualisasi">8. Penjelasan Kode Visualisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-refleksi">Perhitungan refleksi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animasi-kunci-perbaikan">Animasi (kunci perbaikan)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">9. Latihan</a></li>
 </ul>
             </nav>
         </div>
@@ -415,12 +431,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="laporan-refleksi-geometri">
-<h1>Laporan Refleksi Geometri<a class="headerlink" href="#laporan-refleksi-geometri" title="Link to this heading">#</a></h1>
-<section id="pencerminan-titik-terhadap-sumbu-x-dan-sumbu-y">
-<h2>Pencerminan Titik terhadap Sumbu X dan Sumbu Y<a class="headerlink" href="#pencerminan-titik-terhadap-sumbu-x-dan-sumbu-y" title="Link to this heading">#</a></h2>
-</section>
-<hr class="docutils" />
+  <section class="tex2jax_ignore mathjax_ignore" id="refleksi-geometri">
+<h1>📐 Refleksi Geometri<a class="headerlink" href="#refleksi-geometri" title="Link to this heading">#</a></h1>
 <section id="demo-interaktif">
 <h2>🔗 Demo Interaktif<a class="headerlink" href="#demo-interaktif" title="Link to this heading">#</a></h2>
 <p>clik link ini untuk mengarah ke colab</p>
@@ -428,347 +440,363 @@
 <blockquote>
 <div><p><strong>Cara pakai:</strong> Klik badge di atas → Colab terbuka → Jalankan cell → UI langsung muncul.</p>
 </div></blockquote>
-</section>
 <hr class="docutils" />
-<section id="pengertian-refleksi">
-<h2>1. Pengertian Refleksi<a class="headerlink" href="#pengertian-refleksi" title="Link to this heading">#</a></h2>
-<p>Refleksi (pencerminan) adalah transformasi geometri yang memindahkan setiap titik pada suatu bidang ke posisi baru dengan cara mencerminkannya terhadap suatu garis sumbu. Hasil refleksi memiliki jarak yang sama terhadap sumbu cermin, tetapi berada di sisi yang berlawanan.</p>
 <blockquote>
-<div><p><strong>Analogi:</strong> Bayangkan kamu berdiri di depan cermin. Bayangan kamu berada di jarak yang sama dengan jarak kamu ke cermin, tetapi di sisi yang berlawanan.</p>
+<div><p><strong>Refleksi</strong> (pencerminan) adalah transformasi geometri yang memindahkan setiap titik
+pada suatu bangun ke posisi baru yang merupakan <strong>bayangan cerminnya</strong> terhadap suatu sumbu.
+Jarak titik asal ke sumbu cermin <strong>selalu sama</strong> dengan jarak bayangan ke sumbu cermin.</p>
 </div></blockquote>
 </section>
 <hr class="docutils" />
-<section id="refleksi-sebagai-transformasi-linear-matriks">
-<h2>2. Refleksi sebagai Transformasi Linear (Matriks)<a class="headerlink" href="#refleksi-sebagai-transformasi-linear-matriks" title="Link to this heading">#</a></h2>
-<p>Secara matematis, refleksi adalah <strong>transformasi linear</strong> yang direpresentasikan sebagai perkalian matriks. Setiap titik ditulis sebagai vektor kolom:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="o">|</span> <span class="n">x</span> <span class="o">|</span>
-<span class="n">P</span> <span class="o">=</span>  <span class="o">|</span>   <span class="o">|</span>
-     <span class="o">|</span> <span class="n">y</span> <span class="o">|</span>
-</pre></div>
-</div>
-<p>Transformasi dilakukan dengan:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span><span class="s1">&#39; = M × P</span>
-</pre></div>
-</div>
+<section id="konsep-dasar">
+<h2>1. Konsep Dasar<a class="headerlink" href="#konsep-dasar" title="Link to this heading">#</a></h2>
+<p>Bayangkan kamu meletakkan cermin datar di atas kertas berkotak. Setiap titik pada bangun
+akan memiliki bayangan di sisi lain cermin, dengan jarak yang persis sama. Itulah refleksi.</p>
+<p>Dua hal yang <strong>tidak berubah</strong> setelah refleksi:</p>
+<ul class="simple">
+<li><p>Ukuran dan bentuk bangun (kongruen)</p></li>
+<li><p>Jarak antar titik</p></li>
+</ul>
+<p>Satu hal yang <strong>berubah</strong>:</p>
+<ul class="simple">
+<li><p>Orientasi — bangun terlihat “terbalik” seperti di cermin</p></li>
+</ul>
 </section>
 <hr class="docutils" />
 <section id="refleksi-terhadap-sumbu-x">
-<h2>3. Refleksi terhadap Sumbu X<a class="headerlink" href="#refleksi-terhadap-sumbu-x" title="Link to this heading">#</a></h2>
-<section id="matriks-refleksi-x">
-<h3>Matriks Refleksi X<a class="headerlink" href="#matriks-refleksi-x" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="o">|</span>  <span class="mi">1</span>   <span class="mi">0</span> <span class="o">|</span>
-<span class="n">M_x</span>  <span class="o">=</span>  <span class="o">|</span>        <span class="o">|</span>
-        <span class="o">|</span>  <span class="mi">0</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>
+<h2>2. Refleksi terhadap Sumbu X<a class="headerlink" href="#refleksi-terhadap-sumbu-x" title="Link to this heading">#</a></h2>
+<section id="aturan">
+<h3>Aturan<a class="headerlink" href="#aturan" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+(x,\ y) \xrightarrow{\text{Ref. sumbu X}} (x,\ -y)
+\]</div>
+<p>Nilai <strong>x tetap</strong>, nilai <strong>y dibalik tandanya</strong>.</p>
+</section>
+<section id="cara-kerja">
+<h3>Cara kerja<a class="headerlink" href="#cara-kerja" title="Link to this heading">#</a></h3>
+<p>Sumbu X adalah garis cermin horizontal. Setiap titik “dijatuhkan” tegak lurus ke sumbu X,
+lalu dipantulkan sejauh yang sama ke sisi bawah (atau atas).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Titik asal  P(3, 4)
+             │  ↑ 4 satuan
+─────────────┼──────────  ← Sumbu X (cermin)
+             │  ↓ 4 satuan
+Bayangan    P&#39;(3, -4)
 </pre></div>
 </div>
 </section>
-<section id="rumus">
-<h3>Rumus<a class="headerlink" href="#rumus" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(x, y)  →  (x, -y)
-</pre></div>
-</div>
-</section>
-<section id="cara-kerja-pergeseran">
-<h3>Cara Kerja Pergeseran<a class="headerlink" href="#cara-kerja-pergeseran" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">x</span><span class="s1">&#39; |   |  1   0 | | x |   |  x  |</span>
-<span class="o">|</span>    <span class="o">|</span> <span class="o">=</span> <span class="o">|</span>        <span class="o">|</span> <span class="o">|</span>   <span class="o">|</span> <span class="o">=</span> <span class="o">|</span>     <span class="o">|</span>
-<span class="o">|</span> <span class="n">y</span><span class="s1">&#39; |   |  0  -1 | | y |   | -y  |</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Nilai <strong>x tidak berubah</strong> — titik tetap di kolom vertikal yang sama</p></li>
-<li><p>Nilai <strong>y dibalik tandanya</strong> — titik berpindah melewati sumbu X secara vertikal</p></li>
-<li><p>Jarak titik ke sumbu X <strong>tetap sama</strong></p></li>
-</ul>
-</section>
-<section id="ilustrasi-pergeseran">
-<h3>Ilustrasi Pergeseran<a class="headerlink" href="#ilustrasi-pergeseran" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Y
-^
-4 |  *(2,4)--*(4,4)     ← titik asal (biru)
-  |  |        |
-2 |  *(2,2)--*(4,2)
-  |
---+----------------------------&gt; X
-  |
--2|  *(2,-2)-*(4,-2)    ← hasil refleksi X (hijau)
-  |  |        |
--4|  *(2,-4)-*(4,-4)
-</pre></div>
-</div>
-</section>
-<section id="contoh-perhitungan">
-<h3>Contoh Perhitungan<a class="headerlink" href="#contoh-perhitungan" title="Link to this heading">#</a></h3>
+<section id="contoh">
+<h3>Contoh<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Titik</p></th>
-<th class="head"><p>Koordinat Asal</p></th>
-<th class="head"><p>Proses</p></th>
-<th class="head"><p>Hasil Refleksi X</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Titik Asal</p></th>
+<th class="head text-center"><p>Bayangan Ref-X</p></th>
+<th class="head text-left"><p>Keterangan</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Titik 1</p></td>
-<td><p>(2, 2)</p></td>
-<td><p>y: 2 → −2</p></td>
-<td><p>(2, −2)</p></td>
+<tr class="row-even"><td class="text-center"><p>(2, 3)</p></td>
+<td class="text-center"><p>(2, -3)</p></td>
+<td class="text-left"><p>y positif → negatif</p></td>
 </tr>
-<tr class="row-odd"><td><p>Titik 2</p></td>
-<td><p>(4, 2)</p></td>
-<td><p>y: 2 → −2</p></td>
-<td><p>(4, −2)</p></td>
+<tr class="row-odd"><td class="text-center"><p>(5, -1)</p></td>
+<td class="text-center"><p>(5, 1)</p></td>
+<td class="text-left"><p>y negatif → positif</p></td>
 </tr>
-<tr class="row-even"><td><p>Titik 3</p></td>
-<td><p>(4, 4)</p></td>
-<td><p>y: 4 → −4</p></td>
-<td><p>(4, −4)</p></td>
+<tr class="row-even"><td class="text-center"><p>(4, 0)</p></td>
+<td class="text-center"><p>(4, 0)</p></td>
+<td class="text-left"><p>Titik di sumbu X tidak berpindah</p></td>
 </tr>
-<tr class="row-odd"><td><p>Titik 4</p></td>
-<td><p>(2, 4)</p></td>
-<td><p>y: 4 → −4</p></td>
-<td><p>(2, −4)</p></td>
+<tr class="row-odd"><td class="text-center"><p>(-3, 6)</p></td>
+<td class="text-center"><p>(-3, -6)</p></td>
+<td class="text-left"><p>x tidak berubah</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
+<section id="rumus-umum-untuk-bangun-dengan-n-titik">
+<h3>Rumus umum untuk bangun dengan n titik<a class="headerlink" href="#rumus-umum-untuk-bangun-dengan-n-titik" title="Link to this heading">#</a></h3>
+<p>Jika bangun memiliki titik-titik <span class="math notranslate nohighlight">\(A(x_1, y_1),\ B(x_2, y_2),\ \ldots\)</span>, maka setelah refleksi
+terhadap sumbu X:</p>
+<div class="math notranslate nohighlight">
+\[
+A'(x_1,\ -y_1),\quad B'(x_2,\ -y_2),\quad \ldots
+\]</div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="refleksi-terhadap-sumbu-y">
-<h2>4. Refleksi terhadap Sumbu Y<a class="headerlink" href="#refleksi-terhadap-sumbu-y" title="Link to this heading">#</a></h2>
-<section id="matriks-refleksi-y">
-<h3>Matriks Refleksi Y<a class="headerlink" href="#matriks-refleksi-y" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="o">|</span> <span class="o">-</span><span class="mi">1</span>   <span class="mi">0</span> <span class="o">|</span>
-<span class="n">M_y</span>  <span class="o">=</span>  <span class="o">|</span>        <span class="o">|</span>
-        <span class="o">|</span>  <span class="mi">0</span>   <span class="mi">1</span> <span class="o">|</span>
-</pre></div>
-</div>
-</section>
+<h2>3. Refleksi terhadap Sumbu Y<a class="headerlink" href="#refleksi-terhadap-sumbu-y" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>Rumus<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(x, y)  →  (-x, y)
-</pre></div>
-</div>
+<h3>Aturan<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+(x,\ y) \xrightarrow{\text{Ref. sumbu Y}} (-x,\ y)
+\]</div>
+<p>Nilai <strong>y tetap</strong>, nilai <strong>x dibalik tandanya</strong>.</p>
 </section>
 <section id="id2">
-<h3>Cara Kerja Pergeseran<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">x</span><span class="s1">&#39; |   | -1   0 | | x |   | -x |</span>
-<span class="o">|</span>    <span class="o">|</span> <span class="o">=</span> <span class="o">|</span>        <span class="o">|</span> <span class="o">|</span>   <span class="o">|</span> <span class="o">=</span> <span class="o">|</span>    <span class="o">|</span>
-<span class="o">|</span> <span class="n">y</span><span class="s1">&#39; |   |  0   1 | | y |   |  y |</span>
+<h3>Cara kerja<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Sumbu Y adalah garis cermin vertikal. Setiap titik “didorong” tegak lurus ke sumbu Y,
+lalu dipantulkan sejauh yang sama ke sisi kiri (atau kanan).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Bayangan       Titik asal
+P&#39;(-3, 4)      P(3, 4)
+     ←3─────────┼─────3→
+                │
+               Sumbu Y
+               (cermin)
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Nilai <strong>y tidak berubah</strong> — titik tetap di baris horizontal yang sama</p></li>
-<li><p>Nilai <strong>x dibalik tandanya</strong> — titik berpindah melewati sumbu Y secara horizontal</p></li>
-<li><p>Jarak titik ke sumbu Y <strong>tetap sama</strong></p></li>
-</ul>
 </section>
 <section id="id3">
-<h3>Ilustrasi Pergeseran<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span>
-<span class="o">^</span>
-<span class="mi">4</span> <span class="o">|</span> <span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">-*</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>      <span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">--*</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-  <span class="o">|</span>  <span class="o">|</span>       <span class="o">|</span>           <span class="o">|</span>        <span class="o">|</span>
-<span class="mi">2</span> <span class="o">|</span> <span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">-*</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>      <span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">--*</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-  <span class="o">|</span>                  <span class="o">|</span>
-<span class="o">--+------------------+-----------------&gt;</span> <span class="n">X</span>
-     <span class="n">refleksi</span> <span class="n">Y</span> <span class="p">(</span><span class="n">merah</span><span class="p">)</span>       <span class="n">asal</span> <span class="p">(</span><span class="n">biru</span><span class="p">)</span>
-</pre></div>
+<h3>Contoh<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Titik Asal</p></th>
+<th class="head text-center"><p>Bayangan Ref-Y</p></th>
+<th class="head text-left"><p>Keterangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>(2, 3)</p></td>
+<td class="text-center"><p>(-2, 3)</p></td>
+<td class="text-left"><p>x positif → negatif</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>(-5, 1)</p></td>
+<td class="text-center"><p>(5, 1)</p></td>
+<td class="text-left"><p>x negatif → positif</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>(0, 7)</p></td>
+<td class="text-center"><p>(0, 7)</p></td>
+<td class="text-left"><p>Titik di sumbu Y tidak berpindah</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>(6, -4)</p></td>
+<td class="text-center"><p>(-6, -4)</p></td>
+<td class="text-left"><p>y tidak berubah</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="id4">
-<h3>Contoh Perhitungan<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>Rumus umum untuk bangun dengan n titik<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+A'(-x_1,\ y_1),\quad B'(-x_2,\ y_2),\quad \ldots
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="perbandingan-refleksi-x-vs-refleksi-y">
+<h2>4. Perbandingan Refleksi X vs Refleksi Y<a class="headerlink" href="#perbandingan-refleksi-x-vs-refleksi-y" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Titik</p></th>
-<th class="head"><p>Koordinat Asal</p></th>
-<th class="head"><p>Proses</p></th>
-<th class="head"><p>Hasil Refleksi Y</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Aspek</p></th>
+<th class="head text-center"><p>Refleksi Sumbu X</p></th>
+<th class="head text-center"><p>Refleksi Sumbu Y</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Titik 1</p></td>
-<td><p>(2, 2)</p></td>
-<td><p>x: 2 → −2</p></td>
-<td><p>(−2, 2)</p></td>
+<tr class="row-even"><td class="text-left"><p>Cermin / sumbu</p></td>
+<td class="text-center"><p>Sumbu X (horizontal)</p></td>
+<td class="text-center"><p>Sumbu Y (vertikal)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Titik 2</p></td>
-<td><p>(4, 2)</p></td>
-<td><p>x: 4 → −4</p></td>
-<td><p>(−4, 2)</p></td>
+<tr class="row-odd"><td class="text-left"><p>Koordinat berubah</p></td>
+<td class="text-center"><p>y → -y</p></td>
+<td class="text-center"><p>x → -x</p></td>
 </tr>
-<tr class="row-even"><td><p>Titik 3</p></td>
-<td><p>(4, 4)</p></td>
-<td><p>x: 4 → −4</p></td>
-<td><p>(−4, 4)</p></td>
+<tr class="row-even"><td class="text-left"><p>Koordinat tetap</p></td>
+<td class="text-center"><p>x</p></td>
+<td class="text-center"><p>y</p></td>
 </tr>
-<tr class="row-odd"><td><p>Titik 4</p></td>
-<td><p>(2, 4)</p></td>
-<td><p>x: 2 → −2</p></td>
-<td><p>(−2, 4)</p></td>
+<tr class="row-odd"><td class="text-left"><p>Arah bayangan</p></td>
+<td class="text-center"><p>Atas ↔ Bawah</p></td>
+<td class="text-center"><p>Kiri ↔ Kanan</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Contoh</p></td>
+<td class="text-center"><p>(3, 5) → (3, -5)</p></td>
+<td class="text-center"><p>(3, 5) → (-3, 5)</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section id="perbandingan-refleksi-x-dan-refleksi-y">
-<h2>5. Perbandingan Refleksi X dan Refleksi Y<a class="headerlink" href="#perbandingan-refleksi-x-dan-refleksi-y" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspek</p></th>
-<th class="head"><p>Refleksi Sumbu X</p></th>
-<th class="head"><p>Refleksi Sumbu Y</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Sumbu cermin</p></td>
-<td><p>Garis horizontal (y = 0)</p></td>
-<td><p>Garis vertikal (x = 0)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Matriks</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[[1,0],[0,-1]]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[[-1,0],[0,1]]</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Koordinat yang berubah</p></td>
-<td><p>Nilai y (dibalik)</p></td>
-<td><p>Nilai x (dibalik)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Koordinat yang tetap</p></td>
-<td><p>Nilai x</p></td>
-<td><p>Nilai y</p></td>
-</tr>
-<tr class="row-even"><td><p>Arah pergeseran</p></td>
-<td><p>Vertikal (atas ↔ bawah)</p></td>
-<td><p>Horizontal (kiri ↔ kanan)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Determinan matriks</p></td>
-<td><p>−1</p></td>
-<td><p>−1</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<div><p><strong>Catatan:</strong> Determinan = −1 menandakan refleksi membalik orientasi bangun (searah jarum jam menjadi berlawanan arah jarum jam).</p>
-</div></blockquote>
-</section>
-<hr class="docutils" />
-<section id="sifat-sifat-refleksi">
-<h2>6. Sifat-Sifat Refleksi<a class="headerlink" href="#sifat-sifat-refleksi" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><strong>Isometri</strong> — Jarak antar titik tidak berubah. Bangun hasil refleksi kongruen (sama bentuk dan ukuran) dengan bangun asalnya.</p></li>
-<li><p><strong>Orientasi terbalik</strong> — Urutan titik searah jarum jam pada bangun asal menjadi berlawanan arah jarum jam pada hasil refleksi.</p></li>
-<li><p><strong>Refleksi dua kali = Identitas</strong> — Merefleksikan dua kali terhadap sumbu yang sama mengembalikan titik ke posisi asal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M_x × M_x = I  →  (x, y) → (x, -y) → (x, y)
-</pre></div>
-</div>
-</li>
-<li><p><strong>Refleksi X lalu Y = Rotasi 180°</strong> — Merefleksikan terhadap sumbu X kemudian Y menghasilkan rotasi setengah putaran:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>M_y × M_x = | -1   0 |  ← matriks rotasi 180°
-            |  0  -1 |
-</pre></div>
-</div>
-</li>
-<li><p><strong>Titik pada sumbu tidak berpindah</strong> — Titik tepat di sumbu X (y=0) tidak berubah saat refleksi X, begitu pula sebaliknya.</p></li>
+<section id="cara-menggambar-refleksi-manual">
+<h2>5. Cara Menggambar Refleksi (Manual)<a class="headerlink" href="#cara-menggambar-refleksi-manual" title="Link to this heading">#</a></h2>
+<section id="langkah-langkah">
+<h3>Langkah-langkah<a class="headerlink" href="#langkah-langkah" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Tentukan titik-titik</strong> sudut bangun asal, misalnya persegi <span class="math notranslate nohighlight">\(ABCD\)</span>.</p></li>
+<li><p><strong>Terapkan rumus</strong> pada setiap titik untuk mendapatkan bayangan.</p></li>
+<li><p><strong>Plot</strong> titik-titik bayangan di sistem koordinat.</p></li>
+<li><p><strong>Hubungkan</strong> titik-titik bayangan sesuai urutan semula.</p></li>
+<li><p><strong>Verifikasi</strong> — ukur jarak setiap titik asal ke sumbu, bandingkan dengan jarak bayangan ke sumbu (harus sama).</p></li>
 </ol>
 </section>
+<section id="contoh-lengkap-persegi-abcd">
+<h3>Contoh lengkap: Persegi ABCD<a class="headerlink" href="#contoh-lengkap-persegi-abcd" title="Link to this heading">#</a></h3>
+<p>Titik asal:</p>
+<div class="math notranslate nohighlight">
+\[
+A(2,\ 2),\quad B(5,\ 2),\quad C(5,\ 5),\quad D(2,\ 5)
+\]</div>
+<p><strong>Setelah refleksi sumbu X</strong> (y → -y):</p>
+<div class="math notranslate nohighlight">
+\[
+A'(2,\ -2),\quad B'(5,\ -2),\quad C'(5,\ -5),\quad D'(2,\ -5)
+\]</div>
+<p><strong>Setelah refleksi sumbu Y</strong> (x → -x):</p>
+<div class="math notranslate nohighlight">
+\[
+A''(-2,\ 2),\quad B''(-5,\ 2),\quad C''(-5,\ 5),\quad D''(-2,\ 5)
+\]</div>
+</section>
+</section>
 <hr class="docutils" />
-<section id="implementasi-program">
-<h2>7. Implementasi Program<a class="headerlink" href="#implementasi-program" title="Link to this heading">#</a></h2>
-<p>Program dibuat menggunakan <strong>Python</strong> dengan dua versi:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Versi</p></th>
-<th class="head"><p>Library</p></th>
-<th class="head"><p>Environment</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Desktop</p></td>
-<td><p>Tkinter + Matplotlib</p></td>
-<td><p>Lokal (laptop)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Cloud</p></td>
-<td><p>ipywidgets + Matplotlib</p></td>
-<td><p>Google Colab</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="kode-inti-refleksi">
-<h3>Kode Inti Refleksi<a class="headerlink" href="#kode-inti-refleksi" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung koordinat hasil refleksi</span>
-<span class="n">ref_x</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>   <span class="c1"># Refleksi terhadap sumbu X</span>
-<span class="n">ref_y</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>   <span class="c1"># Refleksi terhadap sumbu Y</span>
+<section id="sifat-sifat-penting-refleksi">
+<h2>6. Sifat-Sifat Penting Refleksi<a class="headerlink" href="#sifat-sifat-penting-refleksi" title="Link to this heading">#</a></h2>
+<section id="isometri-kongruensi">
+<h3>Isometri (Kongruensi)<a class="headerlink" href="#isometri-kongruensi" title="Link to this heading">#</a></h3>
+<p>Refleksi adalah <strong>transformasi isometri</strong> — bangun bayangan kongruen dengan bangun asal.
+Panjang sisi, besar sudut, dan luas bangun tidak berubah.</p>
+</section>
+<section id="involutif">
+<h3>Involutif<a class="headerlink" href="#involutif" title="Link to this heading">#</a></h3>
+<p>Jika suatu bangun direfleksikan dua kali terhadap sumbu yang sama, hasilnya kembali ke
+posisi semula:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Ref}(\text{Ref}(P)) = P
+\]</div>
+</section>
+<section id="jarak-ke-sumbu">
+<h3>Jarak ke Sumbu<a class="headerlink" href="#jarak-ke-sumbu" title="Link to this heading">#</a></h3>
+<p>Untuk setiap titik <span class="math notranslate nohighlight">\(P\)</span> dan bayangannya <span class="math notranslate nohighlight">\(P'\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+d(P,\ \text{sumbu}) = d(P',\ \text{sumbu})
+\]</div>
+<p>Garis <span class="math notranslate nohighlight">\(PP'\)</span> selalu <strong>tegak lurus</strong> terhadap sumbu cermin.</p>
+</section>
+<section id="titik-pada-sumbu">
+<h3>Titik pada Sumbu<a class="headerlink" href="#titik-pada-sumbu" title="Link to this heading">#</a></h3>
+<p>Titik yang terletak tepat di atas sumbu cermin <strong>tidak berpindah</strong> (titik tetap / fixed point).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="representasi-matriks">
+<h2>7. Representasi Matriks<a class="headerlink" href="#representasi-matriks" title="Link to this heading">#</a></h2>
+<p>Refleksi dapat ditulis dalam bentuk perkalian matriks, berguna untuk komputasi:</p>
+<section id="id5">
+<h3>Refleksi terhadap sumbu X<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix} x' \\ y' \end{pmatrix}
+=
+\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="id6">
+<h3>Refleksi terhadap sumbu Y<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix} x' \\ y' \end{pmatrix}
+=
+\begin{pmatrix} -1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="implementasi-di-python-numpy">
+<h3>Implementasi di Python (NumPy)<a class="headerlink" href="#implementasi-di-python-numpy" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Titik-titik bangun (kolom = satu titik)</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>   <span class="c1"># baris x</span>
+                   <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>  <span class="c1"># baris y</span>
+
+<span class="c1"># Matriks refleksi sumbu X</span>
+<span class="n">M_refx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+                   <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1"># Matriks refleksi sumbu Y</span>
+<span class="n">M_refy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+                   <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">ref_x</span> <span class="o">=</span> <span class="n">M_refx</span> <span class="o">@</span> <span class="n">points</span>   <span class="c1"># hasil refleksi X</span>
+<span class="n">ref_y</span> <span class="o">=</span> <span class="n">M_refy</span> <span class="o">@</span> <span class="n">points</span>   <span class="c1"># hasil refleksi Y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Asal  :&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ref-X :&quot;</span><span class="p">,</span> <span class="n">ref_x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ref-Y :&quot;</span><span class="p">,</span> <span class="n">ref_y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="cara-kerja-animasi">
-<h3>Cara Kerja Animasi<a class="headerlink" href="#cara-kerja-animasi" title="Link to this heading">#</a></h3>
-<p>Animasi menggunakan <strong>interpolasi linear</strong> — titik bergerak dari posisi asal ke posisi refleksi selama 40 frame:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">/</span> <span class="mi">40</span>          <span class="c1"># t bergerak dari 0.0 → 1.0</span>
-<span class="n">xt</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>   <span class="c1"># posisi x sementara</span>
-<span class="n">yt</span> <span class="o">=</span> <span class="n">y0</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>   <span class="c1"># posisi y sementara</span>
+</section>
+<hr class="docutils" />
+<section id="penjelasan-kode-visualisasi">
+<h2>8. Penjelasan Kode Visualisasi<a class="headerlink" href="#penjelasan-kode-visualisasi" title="Link to this heading">#</a></h2>
+<p>Kode <code class="docutils literal notranslate"><span class="pre">refleksi_geometri.py</span></code> bekerja dengan langkah berikut:</p>
+<section id="perhitungan-refleksi">
+<h3>Perhitungan refleksi<a class="headerlink" href="#perhitungan-refleksi" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pengguna memasukkan 4 titik</span>
+<span class="n">pts</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="c1"># Refleksi X: balik tanda y</span>
+<span class="n">ref_x</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">]</span>
+
+<span class="c1"># Refleksi Y: balik tanda x</span>
+<span class="n">ref_y</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Frame</p></th>
-<th class="head"><p>t</p></th>
-<th class="head"><p>Posisi sementara (target (2, −2))</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0</p></td>
-<td><p>0.00</p></td>
-<td><p>(2.0, 2.0) — posisi awal</p></td>
-</tr>
-<tr class="row-odd"><td><p>10</p></td>
-<td><p>0.25</p></td>
-<td><p>(2.0, 1.0) — seperempat jalan</p></td>
-</tr>
-<tr class="row-even"><td><p>20</p></td>
-<td><p>0.50</p></td>
-<td><p>(2.0, 0.0) — tepat di sumbu X</p></td>
-</tr>
-<tr class="row-odd"><td><p>30</p></td>
-<td><p>0.75</p></td>
-<td><p>(2.0, −1.0) — tiga perempat</p></td>
-</tr>
-<tr class="row-even"><td><p>40</p></td>
-<td><p>1.00</p></td>
-<td><p>(2.0, −2.0) — posisi refleksi</p></td>
-</tr>
-</tbody>
-</table>
+</section>
+<section id="animasi-kunci-perbaikan">
+<h3>Animasi (kunci perbaikan)<a class="headerlink" href="#animasi-kunci-perbaikan" title="Link to this heading">#</a></h3>
+<p>Animasi menggunakan <strong>interpolasi linier</strong> dari titik asal ke titik tujuan.
+Persamaan interpolasi untuk setiap frame <span class="math notranslate nohighlight">\(f\)</span> dari total <span class="math notranslate nohighlight">\(F\)</span> frame:</p>
+<div class="math notranslate nohighlight">
+\[
+x_t = x_0 + (x_1 - x_0) \cdot \frac{f}{F}, \qquad
+y_t = y_0 + (y_1 - y_0) \cdot \frac{f}{F}
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">frames</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">f</span> <span class="o">/</span> <span class="n">frames</span>
+    <span class="n">interp</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span>
+            <span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span>  <span class="c1"># interpolasi x</span>
+            <span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span>  <span class="c1"># interpolasi y</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="p">]</span>
+</pre></div>
 </div>
-</section>
-<section id="fitur-program">
-<h3>Fitur Program<a class="headerlink" href="#fitur-program" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Input 4 titik koordinat (x, y) secara manual</p></li>
-<li><p>Tombol <strong>Tampilkan</strong> — menggambar bangun asal</p></li>
-<li><p>Tombol <strong>Refleksi X</strong> — animasi pencerminan ke sumbu X</p></li>
-<li><p>Tombol <strong>Refleksi Y</strong> — animasi pencerminan ke sumbu Y</p></li>
-<li><p>Toggle layer — show/hide masing-masing bangun</p></li>
-<li><p>Tabel koordinat — menampilkan semua titik asal dan hasil refleksi</p></li>
-<li><p>Tombol <strong>Contoh</strong> — mengisi input otomatis dengan kotak (2,2)–(4,4)</p></li>
-<li><p>Tombol <strong>Hapus</strong> — reset semua input dan grafik</p></li>
-</ul>
+<blockquote>
+<div><p><strong>Catatan perbaikan:</strong> Versi sebelumnya menggunakan variabel <code class="docutils literal notranslate"><span class="pre">OFFSET</span></code> untuk menggeser
+posisi bangun di layar, sehingga interpolasi dimulai dari koordinat yang salah dan animasi
+terlihat “melompat”. Versi baru menghapus OFFSET — semua bangun digambar di koordinat
+aslinya, dan interpolasi berjalan dengan benar dari awal hingga akhir.</p>
+</div></blockquote>
 </section>
 </section>
 <hr class="docutils" />
-<section id="kesimpulan">
-<h2>8. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
-<p>Refleksi geometri adalah operasi pencerminan yang mengubah posisi titik dengan aturan sederhana berbasis matriks transformasi linear:</p>
-<ul class="simple">
-<li><p><strong>Refleksi sumbu X</strong> → Matriks <code class="docutils literal notranslate"><span class="pre">[[1,0],[0,-1]]</span></code> → balik nilai y: <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span> <span class="pre">→</span> <span class="pre">(x,</span> <span class="pre">−y)</span></code></p></li>
-<li><p><strong>Refleksi sumbu Y</strong> → Matriks <code class="docutils literal notranslate"><span class="pre">[[-1,0],[0,1]]</span></code> → balik nilai x: <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span> <span class="pre">→</span> <span class="pre">(−x,</span> <span class="pre">y)</span></code></p></li>
-</ul>
-<p>Bangun yang dihasilkan selalu <strong>kongruen</strong> dengan bangun asalnya — sama bentuk dan ukuran, hanya posisinya yang tercermin. Jarak setiap titik ke sumbu cermin selalu terjaga sama antara titik asal dan titik hasil refleksi.</p>
+<section id="latihan">
+<h2>9. Latihan<a class="headerlink" href="#latihan" title="Link to this heading">#</a></h2>
+<p>Coba kerjakan soal-soal berikut, lalu verifikasi dengan program:</p>
+<ol class="arabic simple">
+<li><p>Segitiga dengan titik <span class="math notranslate nohighlight">\(P(1, 3),\ Q(4, 1),\ R(2, 5)\)</span>.
+Tentukan bayangan setelah refleksi terhadap sumbu X dan sumbu Y.</p></li>
+<li><p>Trapesium <span class="math notranslate nohighlight">\(A(-3, 0),\ B(3, 0),\ C(2, 4),\ D(-2, 4)\)</span>.
+Refleksikan terhadap sumbu X. Apakah ada titik yang tidak berpindah?</p></li>
+<li><p>Jika bayangan suatu titik setelah refleksi sumbu Y adalah <span class="math notranslate nohighlight">\((5, -3)\)</span>,
+berapakah koordinat titik asalnya?</p></li>
+<li><p>Sebuah bangun direfleksikan terhadap sumbu X, kemudian hasilnya direfleksikan lagi
+terhadap sumbu Y. Apakah hasil akhirnya sama dengan rotasi 180° terhadap titik asal?
+Jelaskan dengan contoh!</p></li>
+</ol>
 <hr class="docutils" />
+<p><em>Dibuat untuk mendampingi program <code class="docutils literal notranslate"><span class="pre">refleksi_geometri.py</span></code> di Google Colab.</em></p>
 </section>
 </section>
 
@@ -811,6 +839,15 @@
         <p class="prev-next-title">A. Determinan</p>
       </div>
     </a>
+    <a class="right-next"
+       href="tugas-qr-decomposition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">QR Decomposition &amp; QR Iteration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -829,35 +866,47 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pencerminan-titik-terhadap-sumbu-x-dan-sumbu-y">Pencerminan Titik terhadap Sumbu X dan Sumbu Y</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-interaktif">🔗 Demo Interaktif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-refleksi">1. Pengertian Refleksi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-sebagai-transformasi-linear-matriks">2. Refleksi sebagai Transformasi Linear (Matriks)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-x">3. Refleksi terhadap Sumbu X</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-refleksi-x">Matriks Refleksi X</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus">Rumus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-pergeseran">Cara Kerja Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ilustrasi-pergeseran">Ilustrasi Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan">Contoh Perhitungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar">1. Konsep Dasar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-x">2. Refleksi terhadap Sumbu X</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aturan">Aturan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">Cara kerja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-umum-untuk-bangun-dengan-n-titik">Rumus umum untuk bangun dengan n titik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-y">4. Refleksi terhadap Sumbu Y</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-refleksi-y">Matriks Refleksi Y</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Rumus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Cara Kerja Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ilustrasi Pergeseran</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Contoh Perhitungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refleksi-terhadap-sumbu-y">3. Refleksi terhadap Sumbu Y</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Aturan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Cara kerja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Contoh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Rumus umum untuk bangun dengan n titik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-refleksi-x-dan-refleksi-y">5. Perbandingan Refleksi X dan Refleksi Y</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-sifat-refleksi">6. Sifat-Sifat Refleksi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-program">7. Implementasi Program</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-inti-refleksi">Kode Inti Refleksi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-animasi">Cara Kerja Animasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-program">Fitur Program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-refleksi-x-vs-refleksi-y">4. Perbandingan Refleksi X vs Refleksi Y</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-menggambar-refleksi-manual">5. Cara Menggambar Refleksi (Manual)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah">Langkah-langkah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-lengkap-persegi-abcd">Contoh lengkap: Persegi ABCD</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">8. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-sifat-penting-refleksi">6. Sifat-Sifat Penting Refleksi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isometri-kongruensi">Isometri (Kongruensi)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#involutif">Involutif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-ke-sumbu">Jarak ke Sumbu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#titik-pada-sumbu">Titik pada Sumbu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representasi-matriks">7. Representasi Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Refleksi terhadap sumbu X</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Refleksi terhadap sumbu Y</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-di-python-numpy">Implementasi di Python (NumPy)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-kode-visualisasi">8. Penjelasan Kode Visualisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-refleksi">Perhitungan refleksi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animasi-kunci-perbaikan">Animasi (kunci perbaikan)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">9. Latihan</a></li>
 </ul>
   </nav></div>
 
