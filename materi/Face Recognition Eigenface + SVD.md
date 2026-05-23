@@ -189,8 +189,6 @@ nilai singular  = σᵢ = √λᵢ
 
 ### Penjelasan Setiap Output Matrix:
 
----
-
 ### 🔵 Matrix U (6 × 6)
 
 ```
