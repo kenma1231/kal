@@ -10,4 +10,4 @@ chapters:
 - file: evaluasi
 - file: refleksi
 - file: tugas-qr-decomposition
-- file: Face Recognition Eigenface + SVD
+- file: face-recognition-eigenface-svd
